@@ -2,6 +2,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
 import { Inter, Poppins } from "next/font/google";
+import { dbConnect } from "@/service/mongo";
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,7 +13,11 @@ export const metadata = {
   description: "Connect with the best educators and institutions around the world.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const conn = await dbConnect();
+
+  console.log(conn);
+
   return (
     <html
       lang="en"
