@@ -1,14 +1,19 @@
-"use client";
+
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { getCourses } from "@/queries/courses";
 
-export default function Home() {
+export default async function Home() {
+
+  const courses = await getCourses();
+  console.log(courses);
+
   return (
     <div>
       <h1 className="text-4xl font-bold">Home</h1>
-      <Button onClick={() => toast.error("Hello world")} className="bg-primary text-primary-foreground">Click me</Button>
+
     </div>
   );
 }
